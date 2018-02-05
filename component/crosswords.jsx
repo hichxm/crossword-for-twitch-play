@@ -69,6 +69,13 @@ export default class crosswords extends Component {
             let number = element[2];
             let [y, x] = number.split(":");
             template[y-1][x-1] = index + 1;
+            let word = element[0].split("");
+            let letters_positions = element[3];
+            letters_positions.forEach(function(letters_position, k) {
+                let [y, x] = letters_position.split(":");
+                console.log("x: " + x + " y: " + y);
+                template[y-1][x-1] = word[k];
+            });
         });
     }
 
