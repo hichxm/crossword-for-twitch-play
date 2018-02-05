@@ -34,9 +34,32 @@ export default class crosswords extends Component {
     }
 
     render() {
-        return(
-            <div>ok</div>
-        );
+        return (
+            <table>
+                <tbody>
+                    {this.renderTemplate()}
+                </tbody>
+            </table>
+        )
+    }
+
+    renderTemplate() {
+        let tpl = this.state.template;
+        let row = [];
+        tpl.forEach(function (rows) {
+            let col = [];
+            rows.forEach(function (char, index) {
+                if (char === " ") {
+                    col.push(<td className="">{char}</td>);
+                } else if (!isNaN(char)) {
+                    col.push(<td className="number">{char}</td>);
+                } else {
+                    col.push(<td className="letter" style="color: #777779">{char}</td>);
+                }
+            });
+            row.push(<tr>{col}</tr>);
+        });
+        return row;
     }
 
     initialise() {
