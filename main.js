@@ -125,6 +125,7 @@ class Main extends Component {
         }
     }
 
+    /*
     componentDidMount() {
         let that = this;
         setTimeout(function () {
@@ -142,6 +143,7 @@ class Main extends Component {
             that.setState({word: "liste"});
         }, 2500);
     }
+    */
 
     render() {
         return <CrossWords crossword={crossword} word={this.state.word} />
