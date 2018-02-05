@@ -51,21 +51,21 @@ export default class crosswords extends Component {
 
     renderTemplate() {
         let tpl = this.state.template;
-        let row = [];
+        let tr = [];
         tpl.forEach(function (rows, y) {
-            let col = [];
+            let td = [];
             rows.forEach(function (char, x) {
                 if (char === " ") {
-                    col.push(<td class="blank" id={x + "_" + y}>{char}</td>);
+                    td.push(<td class="blank" id={x + "_" + y}>{char}</td>);
                 } else if (!isNaN(char)) {
-                    col.push(<td class="number" id={x + "_" + y}>{char}</td>);
+                    td.push(<td class="number" id={x + "_" + y}>{char}</td>);
                 } else {
-                    col.push(<td class="letter" id={x + "_" + y} style="color: #777779">{char}</td>);
+                    td.push(<td class="letter" id={x + "_" + y} style="color: #777779">{char}</td>);
                 }
             });
-            row.push(<tr>{col}</tr>);
+            tr.push(<tr>{td}</tr>);
         });
-        return row;
+        return tr;
     }
 
     addingWord(word) {
