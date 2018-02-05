@@ -27,6 +27,23 @@ let crossword = [
             "3:9",
             "3:10"
         ]
+    ],
+    ["MANGER", "Pratique pour vivre.", "8:10", [
+            "7:10",
+            "6:10",
+            "5:10",
+            "4:10",
+            "3:10",
+            "2:10"
+        ]
+    ],
+    ["LISTE", "Pratique pour se rappeler des courses.", "2:6", [
+            "3:6",
+            "4:6",
+            "5:6",
+            "6:6",
+            "7:6"
+        ]
     ]
 ];
 
@@ -49,6 +66,12 @@ class Main extends Component {
         setTimeout(function () {
             that.setState({word: "test"});
         }, 1500);
+        setTimeout(function () {
+            that.setState({word: "manger"});
+        }, 2000);
+        setTimeout(function () {
+            that.setState({word: "liste"});
+        }, 2500);
     }
 
     render() {
