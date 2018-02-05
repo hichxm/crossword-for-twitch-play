@@ -48,13 +48,13 @@ export default class crosswords extends Component {
         let row = [];
         tpl.forEach(function (rows) {
             let col = [];
-            rows.forEach(function (char, index) {
+            rows.forEach(function (char) {
                 if (char === " ") {
-                    col.push(<td className="">{char}</td>);
+                    col.push(<td class="">{char}</td>);
                 } else if (!isNaN(char)) {
-                    col.push(<td className="number">{char}</td>);
+                    col.push(<td class="number">{char}</td>);
                 } else {
-                    col.push(<td className="letter" style="color: #777779">{char}</td>);
+                    col.push(<td class="letter" style="color: #777779">{char}</td>);
                 }
             });
             row.push(<tr>{col}</tr>);
