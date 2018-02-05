@@ -4,5 +4,5 @@ config = {
     password: "oauth:xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
 
     //Twitch chanel
-    channels: "chanel"
+    channel: "#volca780"
 };
