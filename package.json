@@ -1,0 +1,11 @@
+{
+  "name": "crosswords",
+  "version": "1.0.0",
+  "description": "Cross Words for twitch chat.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "volca780",
+  "license": "ISC"
+}
