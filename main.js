@@ -1,5 +1,6 @@
 import {Component, h, render} from 'preact';
-import CrossWords from './component/crosswords'
+import CrossWords from './component/crosswords';
+import tmi from 'tmi.js';
 
 let crossword = [
     ["SALUT", "Marque de politesse lors d'une premiere rencontre.", "1:3", [
