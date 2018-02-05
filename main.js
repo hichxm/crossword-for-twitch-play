@@ -1,4 +1,4 @@
-import {h, render} from 'preact';
+import {Component, h, render} from 'preact';
 import CrossWords from './component/crosswords'
 
 let crossword = [
@@ -17,17 +17,43 @@ let crossword = [
             "6:6"
         ]
     ],
-    ["AMALGAME", "Pratique pour certaine personne :troll:.", "3:1", [
-            "3:2",
+    ["AMALGAME", "Pratique pour certaine personne :troll:.", "3:2", [
             "3:3",
             "3:4",
             "3:5",
             "3:6",
             "3:7",
             "3:8",
-            "3:9"
+            "3:9",
+            "3:10"
         ]
     ]
 ];
 
-render(<CrossWords crossword={crossword}/>, document.body);
+class Main extends Component {
+
+    constructor() {
+        super();
+        this.setState({
+            word: null
+        });
+    }
+
+    componentDidMount() {
+        let that = this;
+        setTimeout(function () {
+            that.setState({word: "amalgame"});
+        }, 500);        setTimeout(function () {
+            that.setState({word: "salut"});
+        }, 1000);
+        setTimeout(function () {
+            that.setState({word: "test"});
+        }, 1500);
+    }
+
+    render() {
+        return <CrossWords crossword={crossword} word={this.state.word} />
+    }
+}
+
+render(<Main />, document.body);
