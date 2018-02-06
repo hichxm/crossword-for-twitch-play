@@ -171,7 +171,6 @@ class Main extends Component {
     }
 
     initCrossWord() {
-        //this.crossword = crossword;
         this.setState({crossword: crossword})
     }
 }
