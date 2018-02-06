@@ -100,7 +100,7 @@ class Main extends Component {
         let username = userstate["username"];
         let displayName = userstate["display-name"];
 
-        let [num, string] = message.split(" ");
+        let [num, string, other] = message.split(" ");
         num--;
 
         if (!isNaN(num)) {
@@ -114,7 +114,7 @@ class Main extends Component {
                     this.state.client.say(config.channel, displayName + chat);
                 }
 
-            } else if (typeof string === "string") {
+            } else if (typeof string === "string" && typeof other === "undefined") {
                 //Check if message like: {int} {string}
 
                 if (typeof this.state.crossword[num] !== "undefined"){
