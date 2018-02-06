@@ -110,7 +110,7 @@ class Main extends Component {
             //Check if message like: {int}
 
                 if (typeof this.state.crossword[num] !== "undefined"){
-                    let chat = " " + (num+1) + ": " + this.state.crossword[num][1];
+                    let chat = " " + (num + 1) + ": " + this.state.crossword[num][1];
                     this.state.client.say(config.channel, displayName + chat);
                 }
 
