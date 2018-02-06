@@ -59,12 +59,14 @@ class Main extends Component {
     constructor() {
         super();
         this.chat = this.chat.bind(this);
-        this.crossword = null;
-        this.initCrossWord();
         this.setState({
-            word: null
+            word: null,
+            crossword: null
         });
+        this.initCrossWord();
         let that = this;
+
+        //tmi.js twitch client. https://docs.tmijs.org/
         let client = new tmi.client({
             options: {
                 debug: false
@@ -79,8 +81,14 @@ class Main extends Component {
             channels: [config.channel]
         });
         this.setState({client: client});
+
+        //tmi.js twitch client. https://docs.tmijs.org/v1.2.1/Configuration.html
         this.state.client.connect();
+
+        //tmi.js twitch client. https://docs.tmijs.org/v1.2.1/Events.html#message
         this.state.client.on("message", function (channel, userstate, message) {
+
+            //Verify if is: chat; no: whisper, action;
             if (userstate["message-type"] === "chat") {
                 that.chat(message, userstate);
             }
@@ -96,28 +104,41 @@ class Main extends Component {
         num--;
 
         if (!isNaN(num)) {
+        //Check if message is like: {int} ...
 
             if (typeof string === "undefined") {
-                if (typeof crossword[num] !== "undefined"){
-                    let chat = " " + (num+1) + ": " + crossword[num][1];
+            //Check if message like: {int}
+
+                if (typeof this.state.crossword[num] !== "undefined"){
+                    let chat = " " + (num+1) + ": " + this.state.crossword[num][1];
                     this.state.client.say(config.channel, displayName + chat);
                 }
+
             } else if (typeof string === "string") {
-                if (typeof crossword[num] !== "undefined"){
+                //Check if message like: {int} {string}
+
+                if (typeof this.state.crossword[num] !== "undefined"){
                     let chat;
-                    if (crossword[num][0].toUpperCase() === string.toUpperCase()) {
-                        if (crossword[num][4] === false) {
+
+                    if (this.state.crossword[num][0].toUpperCase() === string.toUpperCase()) {
+                        //If is the good word.
+
+                        if (this.state.crossword[num][4] === false) {
                             chat = " a trouvé le mot numéro " + (num+1) + ", bien joué.";
-                            this.crossword[num][4] = true;
+                            this.state.crossword[num][4] = true;
                         } else {
                             chat = " ce mot à déja été trouvé."
                         }
+
                         this.setState({word: string});
                     } else {
+                        //If is bad word.
+
                         chat = " dommage, essaie encore.";
                     }
                     this.state.client.say(config.channel, displayName + chat);
                 }
+
             }
 
         }else{
@@ -146,11 +167,12 @@ class Main extends Component {
     */
 
     render() {
-        return <CrossWords crossword={crossword} word={this.state.word} />
+        return <CrossWords crossword={this.state.crossword} word={this.state.word} />
     }
 
     initCrossWord() {
-        this.crossword = crossword;
+        //this.crossword = crossword;
+        this.setState({crossword: crossword})
     }
 }
 
