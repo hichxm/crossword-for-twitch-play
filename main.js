@@ -51,6 +51,14 @@ let crossword = [
             "7:6"
         ],
         false
+    ],
+    ["POXY", "Pratique pour se rappeler des repere de se gros truc.", "2:6", [
+        "1:1",
+        "1:13",
+        "20:1",
+        "20:13"
+    ],
+        false
     ]
 ];
 
