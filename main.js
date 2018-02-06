@@ -2,65 +2,7 @@ import {Component, h, render} from 'preact';
 import CrossWords from './component/crosswords';
 import tmi from 'tmi.js';
 import {config} from "./config";
-
-let crossword = [
-    ["SALUT", "Marque de politesse lors d'une premiere rencontre.", "1:3", [
-            "2:3",
-            "3:3",
-            "4:3",
-            "5:3",
-            "6:3"
-        ],
-        false
-    ],
-    ["TEST", "Pratique pour les developpeurs.", "6:2", [
-            "6:3",
-            "6:4",
-            "6:5",
-            "6:6"
-        ],
-        false
-    ],
-    ["AMALGAME", "Pratique pour certaine personne :troll:.", "3:2", [
-            "3:3",
-            "3:4",
-            "3:5",
-            "3:6",
-            "3:7",
-            "3:8",
-            "3:9",
-            "3:10"
-        ],
-        false
-    ],
-    ["MANGER", "Pratique pour vivre.", "8:10", [
-            "7:10",
-            "6:10",
-            "5:10",
-            "4:10",
-            "3:10",
-            "2:10"
-        ],
-        false
-    ],
-    ["LISTE", "Pratique pour se rappeler des courses.", "2:6", [
-            "3:6",
-            "4:6",
-            "5:6",
-            "6:6",
-            "7:6"
-        ],
-        false
-    ],
-    ["POXY", "Pratique pour se rappeler des repere de se gros truc.", "2:6", [
-        "1:1",
-        "1:13",
-        "20:1",
-        "20:13"
-    ],
-        false
-    ]
-];
+import data from "./data/crosswords.json"
 
 class Main extends Component {
 
@@ -179,7 +121,7 @@ class Main extends Component {
     }
 
     initCrossWord() {
-        this.setState({crossword: crossword})
+        this.setState({crossword: data.crosswords[0]})
     }
 }
 
